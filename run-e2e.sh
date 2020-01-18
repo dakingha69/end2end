@@ -88,6 +88,7 @@ updateNetworksInterval = 5
 enableEtherFaucet = true
 enableRelayMetaTransaction = true
 enableDeployIdentity = true
+contractsPath = "/abi/contracts.json"
 
 [relay.rpc]
 host = "node"
