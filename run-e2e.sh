@@ -67,7 +67,9 @@ unset PGHOST PGUSER POSTGRES_USER PGDATABASE PGPASSWORD POSTGRES_PASSWORD
 
 docker-compose up --no-start
 docker-compose up helper
-docker cp parity-dev-pw e2e-helper:/shared
+docker cp parity/parity-dev-pw e2e-helper:/shared
+docker cp parity/keys e2e-helper:/shared
+docker cp parity/chain.json e2e-helper:/shared
 docker-compose up -d postgres parity
 
 sleep 5

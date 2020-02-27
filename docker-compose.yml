@@ -90,7 +90,7 @@ services:
       - internal
 
   parity:
-    image: parity/parity:v2.6.3-beta
+    image: parity/parity:v2.6.5-beta
     container_name: parity
     restart: unless-stopped
     networks:
@@ -102,12 +102,14 @@ services:
     volumes:
       - shared:/shared
     command: >
+      --chain=/shared/chain.json
       --config=dev-insecure
       --jsonrpc-cors=*
       --jsonrpc-interface=0.0.0.0
-      --unlock=0x00a329c0648769a73afac7f9381e08fb43dbea72
+      --unlock=0x00bd138abd70e2f00903268f3db08f2d25677c9e
       --password=/shared/parity-dev-pw
       --jsonrpc-server-threads=8
+      --keys-path=/shared/keys
 
     # Passing the --jsonrpc-server-threads argument above made the
     # bridge end2end tests work, see
