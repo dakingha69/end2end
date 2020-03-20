@@ -12,7 +12,7 @@ services:
     command: ["true"]
 
   relay:
-    image: relay
+    image: dohaki/nightlines-relay
     container_name: relay
     environment:
       - TRUSTLINES_SYNC_TX_RELAY=1
@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
 
   index:
-    image: index
+    image: dohaki/nightlines-index
     networks:
       - internal
     links:
@@ -49,7 +49,7 @@ services:
     command: runsync --jsonrpc http://node:8545 --waittime 200
 
   createtables:
-    image: index
+    image: dohaki/nightlines-index
     restart: on-failure
     networks:
       - internal
@@ -63,7 +63,7 @@ services:
     command: createtables
 
   init:
-    image: index
+    image: dohaki/nightlines-index
     restart: on-failure
     networks:
       - internal
@@ -116,7 +116,7 @@ services:
     # https://github.com/trustlines-protocol/blockchain/commit/c821f16c3ec9f54e15fa89f4c8dae6ffa64ded01
 
   contracts:
-    image: contracts
+    image: dohaki/nightlines-contracts
     command: ["test", "--file", "/shared/addresses.json", "--jsonrpc", "http://node:8545"]
     container_name: contracts
     links:
