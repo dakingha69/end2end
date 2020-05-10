@@ -30,7 +30,13 @@ services:
       - "127.0.0.1:5000:5000"
     networks:
       - internal
-    command: ["--config", "/shared/config.toml", "--addresses", "/shared/addresses.json"]
+    command:
+      [
+        "--config",
+        "/shared/config.toml",
+        "--addresses",
+        "/shared/addresses.json",
+      ]
     restart: unless-stopped
 
   index:
@@ -117,7 +123,14 @@ services:
 
   contracts:
     image: dohaki/nightlines-contracts
-    command: ["test", "--file", "/shared/addresses.json", "--jsonrpc", "http://node:8545"]
+    command:
+      [
+        "test",
+        "--file",
+        "/shared/addresses.json",
+        "--jsonrpc",
+        "http://node:8545",
+      ]
     container_name: contracts
     links:
       - "parity:node"
